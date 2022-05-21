@@ -5,7 +5,9 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  // Validação
   app.useGlobalPipes(new ValidationPipe());
+  // Swagger setup
   const config = new DocumentBuilder()
     .setTitle('PizzaFresh')
     .setDescription('Aplicação para gestão das mesas de uma pizzaria')
