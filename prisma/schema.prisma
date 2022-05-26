@@ -7,10 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Table{
-  id String @id @default(uuid())
-  number Int @unique
+model Table {
+  id     String @id @default(uuid())
+  number Int    @unique
 
-  updateAt DateTime @updatedAt
-  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt @map("updated_at")
+  createAt DateTime @default(now()) @map("created_at")
+
+  @@map("table")
+}
+
+model Product {
+  id          String @id @default(uuid())
+  name       String @unique
+  description String
+  price       Float
+  image       String
+
+  updateAt DateTime @updatedAt @map("updated_at")
+  createAt DateTime @default(now()) @map("created_at")
+
+  @@map("product")
+}
+
+model User {
+  id     String @id @default(uuid())
+  nickname String @unique
+  name   String 
+  password String
+  image String
+
+  updateAt DateTime @updatedAt @map("updated_at")
+  createAt DateTime @default(now()) @map("created_at")
+
+  @@map("user")
 }
