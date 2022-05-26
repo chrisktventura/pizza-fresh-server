@@ -19,20 +19,20 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
-  @Post()
-  @ApiOperation({
-    summary: 'Criar um produto',
-  })
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productService.create(createProductDto);
-  }
-
   @Get()
   @ApiOperation({
     summary: 'Listar todos os produtos',
   })
   findAll() {
     return this.productService.findAll();
+  }
+
+  @Post()
+  @ApiOperation({
+    summary: 'Criar um produto',
+  })
+  create(@Body() createProductDto: CreateProductDto) {
+    return this.productService.create(createProductDto);
   }
 
   @Get(':id')
