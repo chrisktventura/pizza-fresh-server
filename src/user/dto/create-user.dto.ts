@@ -5,14 +5,14 @@ export class CreateUserDto {
   @IsString()
   @ApiProperty({
     description: 'Nome de usuário. Utilizado no login. Deve ser único',
-    example: 'paulosalvatore',
+    example: 'chrisktventura',
   })
   nickname: string;
 
   @IsString()
   @ApiProperty({
     description: 'Nome do usuário. Apenas para exibição',
-    example: 'Paulo Salvatore',
+    example: 'Chris Ventura',
   })
   name: string;
 
@@ -28,7 +28,7 @@ export class CreateUserDto {
   password: string;
 
   @ApiProperty({
-    description: 'A confirmação da senha deve ser igual a senha',
+    description: 'As senhas devem ser idênticas',
     example: 'Abcd@1234',
   })
   confirmPassword: string;
@@ -36,7 +36,7 @@ export class CreateUserDto {
   @IsUrl()
   @ApiProperty({
     description: 'Imagem de perfil do usuário',
-    example: 'https://avatars.githubusercontent.com/u/7906171',
+    example: 'https://avatars.githubusercontent.com/u/96752298',
   })
   image: string;
 }
