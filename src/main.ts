@@ -1,13 +1,15 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // Validação
+
+  // Validation
   app.useGlobalPipes(new ValidationPipe());
-  // Swagger setup
+
+  // Swagger
   const config = new DocumentBuilder()
     .setTitle('PizzaFresh')
     .setDescription('Aplicação para gestão das mesas de uma pizzaria')
@@ -16,10 +18,13 @@ async function bootstrap() {
     .addTag('table')
     .addTag('product')
     .addTag('user')
+    .addTag('order')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
   await app.listen(3333);
 }
+
 bootstrap();
